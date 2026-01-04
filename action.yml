@@ -17,7 +17,23 @@ inputs:
   glm-api-key:
     required: false
     description: 'GLM API key'
-
+    
+  # Label configuration (optional, with defaults)
+  label-approved:
+    description: 'Label to add when AI approves PR'
+    required: false
+    default: 'ai-approved'
+  
+  label-changes-requested:
+    description: 'Label to add when AI requests changes'
+    required: false
+    default: 'ai-changes-requested'
+  
+  label-human-review:
+    description: 'Label to add when AI defers to human'
+    required: false
+    default: 'human-review-needed'
+    
 runs:
   using: 'composite'
   steps:
@@ -38,3 +54,7 @@ runs:
         ANTHROPIC_API_KEY: ${{ inputs.anthropic-api-key }}
         OPENAI_API_KEY: ${{ inputs.openai-api-key }}
         GLM_API_KEY: ${{ inputs.glm-api-key }}
+        # Pass label configuration to the script
+        LABEL_APPROVED: ${{ inputs.label-approved }}
+        LABEL_CHANGES_REQUESTED: ${{ inputs.label-changes-requested }}
+        LABEL_HUMAN_REVIEW: ${{ inputs.label-human-review }}
