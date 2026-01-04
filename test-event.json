@@ -1,0 +1,32 @@
+{
+  "action": "opened",
+  "number": 1,
+  "pull_request": {
+    "number": 1,
+    "title": "Test PR for AI Review",
+    "body": "This is a test pull request to demonstrate the AI code review system.",
+    "user": {
+      "login": "test-user"
+    },
+    "base": {
+      "ref": "main"
+    },
+    "head": {
+      "ref": "feature/test",
+      "sha": "abc123"
+    },
+    "diff_url": "https://github.com/owner/repo/pull/1.diff",
+    "state": "open",
+    "draft": false,
+    "mergeable": true,
+    "labels": []
+  },
+  "repository": {
+    "name": "repo",
+    "owner": {
+      "login": "owner"
+    },
+    "html_url": "https://github.com/owner/repo"
+  }
+}
+

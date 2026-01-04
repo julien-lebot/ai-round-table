@@ -1,0 +1,40 @@
+name: 'AI Code Review'
+description: 'Multi-agent AI code review system with Claude, GPT, and GLM'
+branding:
+  icon: 'check-circle'
+  color: 'blue'
+
+inputs:
+  github-token:
+    required: true
+    description: 'GitHub token for API access'
+  anthropic-api-key:
+    required: false
+    description: 'Anthropic API key for Claude models'
+  openai-api-key:
+    required: false
+    description: 'OpenAI API key'
+  glm-api-key:
+    required: false
+    description: 'GLM API key'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      shell: bash
+      run: pip install -r ${{ github.action_path }}/requirements.txt
+    
+    - name: Run review
+      shell: bash
+      run: python ${{ github.action_path }}/scripts/review/review_pr.py
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        ANTHROPIC_API_KEY: ${{ inputs.anthropic-api-key }}
+        OPENAI_API_KEY: ${{ inputs.openai-api-key }}
+        GLM_API_KEY: ${{ inputs.glm-api-key }}

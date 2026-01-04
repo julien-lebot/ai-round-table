@@ -1,0 +1,93 @@
+# Model Configuration
+# Define available models and their settings
+# Agents specify which models to use and in what order
+
+models:
+  # GLM Models (Paid - Shared Quota)
+  # NOTE: GLM-4.7, GLM-4.6, GLM-4.5V, GLM-4.5, GLM-4.5-Air, and Visual Analysis
+  # share the same usage quota. These are cost-effective paid models.
+  # Sequential requests work well; avoid parallel requests to prevent quota issues.
+  # RECOMMENDED: Prefer these models for cost optimization.
+  
+  glm_4_6:
+    provider: glm
+    model: glm-4.6
+    max_tokens: 4096
+    temperature: 0.3
+    api_key_env: GLM_API_KEY
+    api_base: https://api.z.ai/api/coding/paas/v4
+    # High Performance, Strong Coding, More Versatile - RECOMMENDED for auto-fix
+    
+  glm_4_5_airx:
+    provider: glm
+    model: glm-4.5-airx
+    max_tokens: 4096
+    temperature: 0.3
+    api_key_env: GLM_API_KEY
+    api_base: https://api.z.ai/api/coding/paas/v4
+    # Ultra-Fast Response, Lightweight - Good fallback
+  
+  # GLM Models (Free - Rate Limited, kept for fallback)
+  glm_4_5_flash:
+    provider: glm
+    model: glm-4.5-flash
+    max_tokens: 4096
+    temperature: 0.3
+    api_key_env: GLM_API_KEY
+    api_base: https://api.z.ai/api/coding/paas/v4
+    # Free tier - Lightweight, High Performance (but rate limited)
+    
+  glm_4_5_air:
+    provider: glm
+    model: glm-4.5-air
+    max_tokens: 4096
+    temperature: 0.3
+    api_key_env: GLM_API_KEY
+    api_base: https://api.z.ai/api/coding/paas/v4
+    # Free tier - Cost-Effective, Lightweight (but rate limited)
+    
+  glm_4_7:
+    provider: glm
+    model: glm-4.7
+    max_tokens: 4096
+    temperature: 0.3
+    api_key_env: GLM_API_KEY
+    api_base: https://api.z.ai/api/coding/paas/v4
+    # SOTA Performance, Deep reasoning - SLOW, use only for complex analysis
+    
+  # Anthropic Models
+  claude_sonnet:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.3
+    api_key_env: ANTHROPIC_API_KEY
+    
+  claude_opus:
+    provider: anthropic
+    model: claude-3-opus-20240229
+    max_tokens: 4096
+    temperature: 0.3
+    api_key_env: ANTHROPIC_API_KEY
+    
+  # OpenAI Models
+  openai_gpt4:
+    provider: openai
+    model: gpt-4-turbo
+    max_tokens: 8192
+    temperature: 0.3
+    api_key_env: OPENAI_API_KEY
+    
+  openai_gpt35:
+    provider: openai
+    model: gpt-3.5-turbo
+    max_tokens: 4096
+    temperature: 0.3
+    api_key_env: OPENAI_API_KEY
+
+# Fallback strategy (global defaults, but agents can override)
+fallback:
+  enabled: true
+  max_retries: 3
+  retry_delay_seconds: 2
+

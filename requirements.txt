@@ -1,0 +1,17 @@
+# AI Code Review System Requirements
+
+# Core dependencies
+pyyaml>=6.0
+requests>=2.31.0
+
+# AI Provider SDKs
+anthropic>=0.18.0
+openai>=1.10.0
+
+# Optional: For better JSON parsing
+jsonschema>=4.20.0
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
